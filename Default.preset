@@ -47,15 +47,15 @@ DisablePermsBackgroundApps      # EnablePermsBackgroundApps
 
 ###  Updates & Security  ###
 DisableUpdateAutoDownload       # EnableUpdateAutoDownload
-# EnableUpdateMSProducts        # DisableUpdateMSProducts
+DisableUpdateMSProducts         # EnableUpdateMSProducts
 DisableUpdateRestart            # EnableUpdateRestart
 DisableAutoRestartSignOn        # EnableAutoRestartSignOn
 DisableUpdateMSRT               # EnableUpdateMSRT
-# DisableUpdateDriver           # EnableUpdateDriver
+EnableUpdateDriver              # DisableUpdateDriver
 SetP2PUpdateLocal               # SetP2PUpdateInternet          # SetP2PUpdateDisable
 # DisableDefender               # EnableDefender
 DisableDefenderCloud            # EnableDefenderCloud
-EnableCtrldFolderAccess         # DisableCtrldFolderAccess
+DisableCtrldFolderAccess        # EnableCtrldFolderAccess
 DisableWakeUpSignIn             # EnableWakeUpSignIn
 HideAccountProtectionWarn       # ShowAccountProtectionWarn
 SetUACHigh                      # SetUACLow                     
