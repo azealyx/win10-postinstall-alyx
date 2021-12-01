@@ -173,6 +173,21 @@ Function EnableDiagTrack {
 }
 
 
+# Stop and disable Diagnostics Hub Standard Collector Service
+Function DisableDiagHub {
+	Write-Output "Stopping and disabling Diagnostics Hub Standard Collector Service..."
+	Stop-Service "diagnosticshub.standardcollector.service" -WarningAction SilentlyContinue
+	Set-Service "diagnosticshub.standardcollector.service" -StartupType Disabled
+}
+
+# Enable and start Diagnostics Hub Standard Collector Service
+Function EnableDiagHub {
+	Write-Output "Enabling Diagnostics Hub Standard Collector Service..."
+	Set-Service "diagnosticshub.standardcollector.service" -StartupType Manual
+	Start-Service "diagnosticshub.standardcollector.service" -WarningAction SilentlyContinue
+}
+
+
 # Stop and disable Device Management Wireless Application Protocol (WAP) Push Service
 # Note: This service is needed for Microsoft Intune interoperability
 Function DisableWAPPush {
@@ -216,6 +231,25 @@ Function DisableWebLangList {
 Function EnableWebLangList {
 	Write-Output "Enabling Website Access to Language List..."
 	Remove-ItemProperty -Path "HKCU:\Control Panel\International\User Profile" -Name "HttpAcceptLanguageOptOut" -ErrorAction SilentlyContinue
+}
+
+
+# Disable App Launch Tracking
+Function DisableAppLaunchTrack {
+	Write-Output "Disabling App Launch Tracking..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Start_TrackProgs" -Type DWord -Value 0
+}
+
+# Enable App Launch Tracking
+Function EnableAppLaunchTrack {
+	Write-Output "Enabling App Launch Tracking..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Start_TrackProgs" -Type DWord -Value 1
 }
 
 
@@ -864,6 +898,21 @@ Function DisableCtrldFolderAccess {
 }
 
 
+# Disable Require Sign-in on Wakeup
+Function DisableWakeUpSignIn {
+	Write-Output "Disabling Require Sign-in on Wakeup..."
+	powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0
+	powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0
+}
+
+# Enable Require Sign-in on Wakeup
+Function EnableWakeUpSignIn {
+	Write-Output "Enabling Require Sign-in on Wakeup..."
+	powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1
+	powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1
+}
+
+
 # Hide Account Protection warning in Defender about not using a Microsoft account
 Function HideAccountProtectionWarn {
 	Write-Output "Hiding Account Protection warning..."
@@ -1442,6 +1491,32 @@ Function SetAppsDarkMode {
 }
 
 
+# Enable transparency effects
+Function DisableTransparency {
+	Write-Output "Disabling transparency effects..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "EnableTransparency" -Type DWord -Value 0
+}
+
+# Enable transparency effects
+Function EnableTransparency {
+	Write-Output "Enabling transparency effects..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "EnableTransparency" -Type DWord -Value 1
+}
+
+
+# Enable window title bar color according to prevalent background color
+Function EnableTitleBarColor {
+	Write-Output "Enabling window title bar accent color..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "ColorPrevalence" -Type DWord -Value 1
+}
+
+# Disable window title bar accent color
+Function DisableTitleBarColor {
+	Write-Output "Disabling window title bar accent color..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "ColorPrevalence" -Type DWord -Value 0
+}
+
+
 # Enable taskbar accent color according to prevalent background color
 Function EnableTaskbarColor {
 	$val = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme"
@@ -1927,6 +2002,76 @@ Function ShowTaskbarPeopleIcon {
 }
 
 
+# Hide News and Interests on the taskbar
+Function HideTaskbarNewsInterests {
+	Write-Output "Hiding News and Interests on the taskbar..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
+}
+
+# Show News and Interests on the taskbar
+Function ShowTaskbarNewsInterests {
+	Write-Output "Showing News and Interests on the taskbar..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 0
+}
+
+
+# Hide Windows Ink Workspace icon
+Function HideInkWorkspaceIcon {
+	Write-Output "Hiding Windows Ink Workspace icon..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Type DWord -Value 0
+}
+
+# Show Windows Ink Workspace icon
+Function ShowInkWorkspaceIcon {
+	Write-Output "Showing Windows Ink Workspace icon..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Type DWord -Value 1
+}
+
+
+# Hide Touch Keyboard icon
+Function HideTouchKeyboardIcon {
+	Write-Output "Hiding Touch Keyboard icon..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\TabletTip\1.7")) {
+		New-Item -Path "HKCU:\Software\Microsoft\TabletTip\1.7" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\TabletTip\1.7" -Name "TipbandDesiredVisibility" -Type DWord -Value 0
+}
+
+# Show Touch Keyboard icon
+Function ShowTouchKeyboardIcon {
+	Write-Output "Showing Touch Keyboard icon..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\TabletTip\1.7")) {
+		New-Item -Path "HKCU:\Software\Microsoft\TabletTip\1.7" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\TabletTip\1.7" -Name "TipbandDesiredVisibility" -Type DWord -Value 1
+}
+
+
+# Hide Bluetooth tray icon
+Function HideBluetoothTrayIcon {
+	Write-Output "Hiding Bluetooth tray icon..."
+	Set-Itemproperty 'HKCU:\Control Panel\Bluetooth' -Name 'Notification Area Icon' -Value '0' -Type DWord
+}
+
+# Show Bluetooth tray icon
+Function ShowBluetoothTrayIcon {
+	Write-Output "Showing Bluetooth tray icon..."
+	Set-Itemproperty 'HKCU:\Control Panel\Bluetooth' -Name 'Notification Area Icon' -Value '1' -Type DWord
+}
+
+
 # Hide Windows Defender SysTray icon
 Function HideDefenderTrayIcon {
 	Write-Output "Hiding Windows Defender SysTray icon..."
@@ -1954,6 +2099,33 @@ Function ShowDefenderTrayIcon {
 	}
 }
 
+
+# Hide Meet Now tray icon
+Function HideMeetNowTrayIcon {
+	Write-Output "Hiding Meet Now tray icon..."
+	Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
+
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" | Out-Null
+	}
+	$MeetNowSettings = Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 -Name Settings -ErrorAction Ignore
+	$MeetNowSettings[9] = 128
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Type Binary -Value $MeetNowSettings
+}
+
+# Show Meet Now tray icon
+Function ShowMeetNowTrayIcon {
+	Write-Output "Showing Meet Now tray icon..."
+	Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 0
+
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" | Out-Null
+	}
+	$MeetNowSettings = Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 -Name Settings -ErrorAction Ignore
+	$MeetNowSettings[9] = 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Type Binary -Value $MeetNowSettings
+}
+
 ##########
 #endregion Personalization
 ##########
@@ -1974,6 +2146,22 @@ Function ShowDesktopIcons {
 Function HideDesktopIcons {
 	Write-Output "Hiding all icons from desktop..."
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideIcons" -Value 1
+}
+
+
+# Set JPEG wallpaper to standard quality
+Function SetWallpaperQualitySD {
+	Write-Output "Setting JPEG wallpaper to standard quality..."
+	Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name JPEGImportQuality -Force -ErrorAction SilentlyContinue
+}
+
+# Set JPEG wallpaper to high quality
+Function SetWallpaperQualityHD {
+	Write-Output "Setting JPEG wallpaper to high quality..."
+	If (!(Test-Path "HKCU:\Control Panel\Desktop")) {
+		New-Item -Path "HKCU:\Control Panel\Desktop" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "JPEGImportQuality" -Type DWord -Value 100
 }
 
 

@@ -15,9 +15,11 @@ RequireAdmin
 DisableTelemetry                # EnableTelemetry
 DisableFeedback                 # EnableFeedback
 DisableDiagTrack                # EnableDiagTrack
+DisableDiagHub                  # EnableDiagHub
 DisableWAPPush                  # EnableWAPPush
 DisableAdvertisingID            # EnableAdvertisingID
 DisableWebLangList              # EnableWebLangList
+DisableAppLaunchTrack           # EnableAppLaunchTrack
 DisableTailoredExperiences      # EnableTailoredExperiences
 DisableErrorReporting           # EnableErrorReporting
 DisableActivityHistory          # EnableActivityHistory
@@ -54,6 +56,7 @@ SetP2PUpdateLocal               # SetP2PUpdateInternet          # SetP2PUpdateDi
 # DisableDefender               # EnableDefender
 DisableDefenderCloud            # EnableDefenderCloud
 EnableCtrldFolderAccess         # DisableCtrldFolderAccess
+DisableWakeUpSignIn             # EnableWakeUpSignIn
 HideAccountProtectionWarn       # ShowAccountProtectionWarn
 SetUACHigh                      # SetUACLow                     
 DisableDownloadBlocking         # EnableDownloadBlocking
@@ -94,7 +97,9 @@ DisableConnectionSharing        # EnableConnectionSharing
 ###  Personalization  ###
 SetSystemDarkMode               # SetSystemLightMode
 SetAppsLightMode                # SetAppsDarkMode
+DisableTransparency             # EnableTransparency
 EnableTitleBarColor             # DisableTitleBarColor
+EnableTaskbarColor              # DisableTaskbarColor
 SetVisualFXStandard             # SetVisualFXAppearance         # SetVisualFXPerformance
 DisableLockScreenBlur           # EnableLockScreenBlur
 # HideNetworkFromLockScreen     # ShowNetworkOnLockScreen
@@ -116,10 +121,16 @@ HideTaskView                    # ShowTaskView
 HideTrayIcons                   # ShowTrayIcons
 HideSecondsFromTaskbar          # ShowSecondsInTaskbar
 HideTaskbarPeopleIcon           # ShowTaskbarPeopleIcon
+HideTaskbarNewsInterests        # HideTaskbarNewsInterests
+HideInkWorkspaceIcon            # ShowInkWorkspaceIcon
+HideTouchKeyboardIcon           # HideTouchKeyboardIcon
+HideBluetoothTrayIcon           # ShowBluetoothTrayIcon
 HideDefenderTrayIcon            # ShowDefenderTrayIcon
+HideMeetNowTrayIcon             # ShowMeetNowTrayIcon
 
 ###  Windows Explorer  ###
 # HideDesktopIcons              # ShowDesktopIcons
+SetWallpaperQualityHD           # SetWallpaperQualitySD
 # HideShortcutArrow             # ShowShortcutArrow
 DisableShortcutInName           # EnableShortcutInName
 ShowThisPCOnDesktop             # HideThisPCFromDesktop
