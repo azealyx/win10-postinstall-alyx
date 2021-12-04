@@ -53,7 +53,7 @@ DisableAutoRestartSignOn        # EnableAutoRestartSignOn
 DisableUpdateMSRT               # EnableUpdateMSRT
 EnableUpdateDriver              # DisableUpdateDriver
 SetP2PUpdateLocal               # SetP2PUpdateInternet          # SetP2PUpdateDisable
-# DisableDefender               # EnableDefender
+EnableDefender                  # DisableDefender
 DisableDefenderCloud            # EnableDefenderCloud
 DisableCtrldFolderAccess        # EnableCtrldFolderAccess
 DisableWakeUpSignIn             # EnableWakeUpSignIn
@@ -152,10 +152,11 @@ ShowMusicInExplorer             # HideMusicFromExplorer
 ShowPicturesInExplorer          # HidePicturesFromExplorer
 ShowVideosInExplorer            # HideVideosFromExplorer
 ShowNetworkInExplorer           # HideNetworkFromExplorer
-ShowShareMenu                   # HideShareMenu
+HideEditWithPaint3DMenu         # ShowEditWithPaint3DMenu
+# ShowShareMenu                 # HideShareMenu
 HideGiveAccessToMenu            # ShowGiveAccessToMenu
 HideIncludeInLibraryMenu        # ShowIncludeInLibraryMenu
-HideEditWithPaint3DMenu         # ShowEditWithPaint3DMenu
+HidePreviousVersionsMenu        # ShowPreviousVersionsMenu
 ShowTaskManagerDetails          # HideTaskManagerDetails
 ShowFileOperationsDetails       # HideFileOperationsDetails
 EnableFileDeleteConfirm         # DisableFileDeleteConfirm
