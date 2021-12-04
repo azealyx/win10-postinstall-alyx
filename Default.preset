@@ -58,7 +58,7 @@ DisableDefenderCloud            # EnableDefenderCloud
 DisableCtrldFolderAccess        # EnableCtrldFolderAccess
 DisableWakeUpSignIn             # EnableWakeUpSignIn
 HideAccountProtectionWarn       # ShowAccountProtectionWarn
-SetUACHigh                      # SetUACLow                     
+SetUACHigh                      # SetUACLow
 DisableDownloadBlocking         # EnableDownloadBlocking
 DisableScriptHost               # EnableScriptHost
 # EnableDotNetStrongCrypto      # DisableDotNetStrongCrypto
@@ -71,7 +71,7 @@ SetDEPOptOut                    # SetDEPOptIn
 EnableSharingMappedDrives       # DisableSharingMappedDrives
 DisableAdminShares              # EnableAdminShares
 DisableMaintenanceWakeUp        # EnableMaintenanceWakeUp
-# EnableF8BootMenu              # DisableF8BootMenu
+DisableF8BootMenu               # EnableF8BootMenu
 # DisableBootRecovery           # EnableBootRecovery
 # DisableRecoveryAndReset       # EnableRecoveryAndReset
 
@@ -104,7 +104,7 @@ SetVisualFXStandard             # SetVisualFXAppearance         # SetVisualFXPer
 DisableLockScreenBlur           # EnableLockScreenBlur
 # HideNetworkFromLockScreen     # ShowNetworkOnLockScreen
 # HideShutdownFromLockScreen    # ShowShutdownOnLockScreen
-# EnableVerboseStatus           # DisableVerboseStatus
+DisableVerboseStatus            # EnableVerboseStatus
 # DisableFirstLogonAnimation    # EnableFirstLogonAnimation
 # DisableChangingSoundScheme    # EnableChangingSoundScheme
 # SetSoundSchemeNone            # SetSoundSchemeDefault
@@ -129,9 +129,9 @@ HideDefenderTrayIcon            # ShowDefenderTrayIcon
 HideMeetNowTrayIcon             # ShowMeetNowTrayIcon
 
 ###  Windows Explorer  ###
-# HideDesktopIcons              # ShowDesktopIcons
+ShowDesktopIcons                # HideDesktopIcons
 SetWallpaperQualityHD           # SetWallpaperQualitySD
-# HideShortcutArrow             # ShowShortcutArrow
+ShowShortcutArrow               # HideShortcutArrow
 DisableShortcutInName           # EnableShortcutInName
 ShowThisPCOnDesktop             # HideThisPCFromDesktop
 ShowUserFolderOnDesktop         # HideUserFolderFromDesktop
@@ -152,7 +152,7 @@ ShowMusicInExplorer             # HideMusicFromExplorer
 ShowPicturesInExplorer          # HidePicturesFromExplorer
 ShowVideosInExplorer            # HideVideosFromExplorer
 ShowNetworkInExplorer           # HideNetworkFromExplorer
-# HideShareMenu                 # ShowShareMenu
+ShowShareMenu                   # HideShareMenu
 HideGiveAccessToMenu            # ShowGiveAccessToMenu
 HideIncludeInLibraryMenu        # ShowIncludeInLibraryMenu
 ShowTaskManagerDetails          # HideTaskManagerDetails
@@ -161,21 +161,21 @@ EnableFileDeleteConfirm         # DisableFileDeleteConfirm
 
 ###  Folder Options  ###
 SetExplorerThisPC               # SetExplorerQuickAccess
-# HideQuickAccess               # ShowQuickAccess
+ShowQuickAccess                 # HideQuickAccess
 SetControlPanelCategories       # SetControlPanelSmallIcons     # SetControlPanelLargeIcons
-# DisableRecentFiles            # EnableRecentFiles
-# HideRecentShortcuts           # ShowRecentShortcuts
-# EnableClearRecentFiles        # DisableClearRecentFiles
-# DisableThumbnails             # EnableThumbnails
+EnableRecentFiles               # DisableRecentFiles
+HideRecentShortcuts             # ShowRecentShortcuts
+EnableClearRecentFiles          # DisableClearRecentFiles
+EnableThumbnails                # DisableThumbnails
 DisableThumbnailCache           # EnableThumbnailCache
 DisableThumbsDBOnNetwork        # EnableThumbsDBOnNetwork
-# ShowExplorerTitleFullPath     # HideExplorerTitleFullPath
+HideExplorerTitleFullPath       # ShowExplorerTitleFullPath
 ShowHiddenFiles                 # HideHiddenFiles
 # ShowEmptyDrives               # HideEmptyDrives
 ShowKnownExtensions             # HideKnownExtensions
 ShowFolderMergeConflicts        # HideFolderMergeConflicts
-# ShowSuperHiddenFiles          # HideSuperHiddenFiles
-# EnableFldrSeparateProcess     # DisableFldrSeparateProcess
+HideSuperHiddenFiles            # ShowSuperHiddenFiles
+DisableFldrSeparateProcess      # EnableFldrSeparateProcess
 DisableRestoreFldrWindows       # EnableRestoreFldrWindows
 # ShowEncCompFilesColor         # HideEncCompFilesColor
 HideSyncNotifications           # ShowSyncNotifications
