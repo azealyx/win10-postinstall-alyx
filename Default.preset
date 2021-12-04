@@ -155,6 +155,7 @@ ShowNetworkInExplorer           # HideNetworkFromExplorer
 ShowShareMenu                   # HideShareMenu
 HideGiveAccessToMenu            # ShowGiveAccessToMenu
 HideIncludeInLibraryMenu        # ShowIncludeInLibraryMenu
+HideEditWithPaint3DMenu         # ShowEditWithPaint3DMenu
 ShowTaskManagerDetails          # HideTaskManagerDetails
 ShowFileOperationsDetails       # HideFileOperationsDetails
 EnableFileDeleteConfirm         # DisableFileDeleteConfirm
