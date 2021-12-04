@@ -153,6 +153,7 @@ ShowPicturesInExplorer          # HidePicturesFromExplorer
 ShowVideosInExplorer            # HideVideosFromExplorer
 ShowNetworkInExplorer           # HideNetworkFromExplorer
 HideEditWithPaint3DMenu         # ShowEditWithPaint3DMenu
+HidePrintCMDMenu                # ShowPrintCMDMenu
 # ShowShareMenu                 # HideShareMenu
 HideGiveAccessToMenu            # ShowGiveAccessToMenu
 HideIncludeInLibraryMenu        # ShowIncludeInLibraryMenu

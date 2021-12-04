@@ -3075,6 +3075,30 @@ Function ShowEditWithPaint3DMenu {
 }
 
 
+# Hide 'Print' context menu item for batch files (.bat, .cmd)
+Function HidePrintCMDMenu {
+	Write-Output "Hiding 'Print' context menu item for batch files (.bat, .cmd)..."
+	if (!(Test-Path "HKCR:")) {
+		New-PSDrive -Name "HKCR" -PSProvider "Registry" -Root "HKEY_CLASSES_ROOT" | Out-Null
+	}
+	New-Item -Path "HKCR:\batfile\shell\print" -ErrorAction SilentlyContinue | Out-Null
+	Set-ItemProperty -Path "HKCR:\batfile\shell\print" -Name "ProgrammaticAccessOnly" -Type String -Value ""
+
+	New-Item -Path "HKCR:\cmdfile\shell\print" -ErrorAction SilentlyContinue | Out-Null
+	Set-ItemProperty -Path "HKCR:\cmdfile\shell\print" -Name "ProgrammaticAccessOnly" -Type String -Value ""
+}
+
+# Show 'Print' context menu item for batch files (.bat, .cmd)
+Function ShowPrintCMDMenu {
+	Write-Output "Showing 'Print' context menu item for batch files (.bat, .cmd)..."
+	if (!(Test-Path "HKCR:")) {
+		New-PSDrive -Name "HKCR" -PSProvider "Registry" -Root "HKEY_CLASSES_ROOT" | Out-Null
+	}
+	Remove-ItemProperty -Path "HKCR:\batfile\shell\print" -Name ProgrammaticAccessOnly -Force -ErrorAction Ignore
+	Remove-ItemProperty -Path "HKCR:\cmdfile\shell\print" -Name ProgrammaticAccessOnly -Force -ErrorAction Ignore
+}
+
+
 # Hide 'Restore previous versions' context menu item
 Function HidePreviousVersionsMenu {
 	Write-Output "Hiding 'Restore previous versions' context menu item..."
