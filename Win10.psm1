@@ -2313,26 +2313,26 @@ Function HideTaskbarPeopleIcon {
 # Show Taskbar People icon
 Function ShowTaskbarPeopleIcon {
 	Write-Output "Showing People icon..."
-	Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -ErrorAction SilentlyContinue
+	if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 1
 }
 
 
 # Hide News and Interests on the taskbar
 Function HideTaskbarNewsInterests {
 	Write-Output "Hiding News and Interests on the taskbar..."
-	if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds")) {
-		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" | Out-Null
+	if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Feeds")) {
+		New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Feeds" | Out-Null
 	}
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
+	Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
 }
 
 # Show News and Interests on the taskbar
 Function ShowTaskbarNewsInterests {
 	Write-Output "Showing News and Interests on the taskbar..."
-	if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds")) {
-		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" | Out-Null
-	}
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 0
+	Remove-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -ErrorAction SilentlyContinue
 }
 
 

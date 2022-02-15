@@ -125,7 +125,7 @@ HideTaskbarNewsInterests        # HideTaskbarNewsInterests
 HideInkWorkspaceIcon            # ShowInkWorkspaceIcon
 HideTouchKeyboardIcon           # HideTouchKeyboardIcon
 HideBluetoothTrayIcon           # ShowBluetoothTrayIcon
-HideDefenderTrayIcon            # ShowDefenderTrayIcon
+# HideDefenderTrayIcon          # ShowDefenderTrayIcon
 HideMeetNowTrayIcon             # ShowMeetNowTrayIcon
 
 ###  Windows Explorer  ###
@@ -193,7 +193,7 @@ DisableNTFSLastAccess           # EnableNTFSLastAccess
 
 ###  System & Devices  ###
 SetDisplayTimeoutStandard       # SetDisplayTimeoutExtended     # SetDisplayTimeoutNever
-SetSleepTimeoutStandard         # SetSleepTimeoutExtended       # SetSleepTimeoutNever
+SetSleepTimeoutExtended         # SetSleepTimeoutStandard       # SetSleepTimeoutNever
 # DisableSleepButton            # EnableSleepButton
 DisableFastStartup              # EnableFastStartup
 # EnableHibernation             # DisableHibernation
