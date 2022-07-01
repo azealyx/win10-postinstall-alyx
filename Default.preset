@@ -203,6 +203,7 @@ DisableFastStartup              # EnableFastStartup
 # DisableSuperfetch             # EnableSuperfetch
 # DisableRecycleBin             # EnableRecycleBin
 # DisableDefragmentation        # EnableDefragmentation
+EnableTempCleanup               # DisableTempCleanup
 DisableSharedExperiences        # EnableSharedExperiences
 DisableClipboardHistory         # EnableClipboardHistory
 DisableMediaStreaming           # EnableMediaStreaming
