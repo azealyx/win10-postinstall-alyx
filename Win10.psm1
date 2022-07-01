@@ -1026,6 +1026,22 @@ Function ShowAccountProtectionWarn {
 }
 
 
+# Hide Smart Screen filter warning in Defender
+Function HideSmartScreenWarn {
+	Write-Output "Hiding Smart Screen filter warning..."
+	if (!(Test-Path "HKCU:\Software\Microsoft\Windows Security Health\State")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows Security Health\State" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows Security Health\State" -Name "AppAndBrowser_EdgeSmartScreenOff" -Type DWord -Value 0
+}
+
+# Show Smart Screen filter warning in Defender
+Function ShowSmartScreenWarn {
+	Write-Output "Showing Smart Screen filter warning..."
+	Remove-ItemProperty "HKCU:\Software\Microsoft\Windows Security Health\State" -Name "AppAndBrowser_EdgeSmartScreenOff" -ErrorAction SilentlyContinue
+}
+
+
 # Lower UAC level (disabling it completely would break apps)
 Function SetUACLow {
 	Write-Output "Lowering UAC level..."
