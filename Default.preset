@@ -114,7 +114,7 @@ HideMostUsedApps                # ShowMostUsedApps
 DisableAppSuggestions           # EnableAppSuggestions
 DisableWebSearch                # EnableWebSearch
 ShowLargeTaskbarIcons           # ShowSmallTaskbarIcons
-# SetWinXMenuPowerShell         # SetWinXMenuCmd
+SetWinXMenuCmd                  # SetWinXMenuPowerShell
 SetTaskbarCombineAlways         # SetTaskbarCombineWhenFull     # SetTaskbarCombineNever
 HideTaskbarSearch               # ShowTaskbarSearchIcon         # ShowTaskbarSearchBox
 HideTaskView                    # ShowTaskView
@@ -208,7 +208,7 @@ DisableClipboardHistory         # EnableClipboardHistory
 DisableMediaStreaming           # EnableMediaStreaming
 DisableMediaOnlineAccess        # EnableMediaOnlineAccess
 DisableRemoteAssistance         # EnableRemoteAssistance
-EnableRemoteDesktop             # DisableRemoteDesktop
+# EnableRemoteDesktop           # DisableRemoteDesktop
 # DisableRestorePoints          # EnableRestorePoints
 RemoveFaxPrinter                # AddFaxPrinter
 DisableEnhPointerPrecision      # EnableEnhPointerPrecision
@@ -277,5 +277,5 @@ UnpinStartMenuTiles
 UnpinTaskbarIcons
 
 ###  Auxiliary Functions  ###
-WaitForKey
 RestartExplorer
+WaitForKey
